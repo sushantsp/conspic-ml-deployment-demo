@@ -1,0 +1,14 @@
+artifact_uri: file:///d:/conSPIC/conspic-ml-deployment-demo/notebooks/mlruns/885577401983777356/d9a43bc0a12742cbaf871bcafe2cddcf/artifacts
+end_time: 1757184830105
+entry_point_name: ''
+experiment_id: '885577401983777356'
+lifecycle_stage: active
+run_id: d9a43bc0a12742cbaf871bcafe2cddcf
+run_name: RandomForest
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757184814332
+status: 3
+tags: []
+user_id: Admin

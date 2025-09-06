@@ -1,0 +1,10 @@
+artifact_location: file:///d:/conSPIC/conspic-ml-deployment-demo/notebooks/mlruns/885577401983777356/models/m-6f0a51e150404e1889ee275fa9411693/artifacts
+creation_timestamp: 1757184814678
+experiment_id: '885577401983777356'
+last_updated_timestamp: 1757184830055
+model_id: m-6f0a51e150404e1889ee275fa9411693
+model_type: null
+name: model
+source_run_id: d9a43bc0a12742cbaf871bcafe2cddcf
+status: 2
+status_message: null

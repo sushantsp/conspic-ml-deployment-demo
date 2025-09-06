@@ -1,0 +1,22 @@
+artifact_path: file:///d:/conSPIC/conspic-ml-deployment-demo/notebooks/mlruns/885577401983777356/models/m-6f0a51e150404e1889ee275fa9411693/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.4
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.1
+mlflow_version: 3.3.2
+model_id: m-6f0a51e150404e1889ee275fa9411693
+model_size_bytes: 3146707
+model_uuid: m-6f0a51e150404e1889ee275fa9411693
+prompts: null
+run_id: d9a43bc0a12742cbaf871bcafe2cddcf
+utc_time_created: '2025-09-06 18:53:34.769805'
