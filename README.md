@@ -133,6 +133,71 @@ When done with the demo:
 
 
 
+
+---
+
+
+
+## 🚀 Phase 4: Streamlit Deployment
+
+In this phase, we build a simple **Streamlit web app** that loads the trained diabetes model directly and allows users to interact with it through a UI.
+
+### 1. Run Locally
+```bash
+# Activate venv
+source venv/bin/activate      # Linux/Mac
+venv\Scripts\activate         # Windows
+
+# Start Streamlit app
+streamlit run app/streamlit_app.py
+````
+
+Open [http://localhost:8501](http://localhost:8501) in your browser.
+
+---
+
+### 2. Deploy on EC2
+
+1. **Update security group**: add inbound rule for **TCP 8501** (My IP or `0.0.0.0/0` for demo).
+2. **SSH into EC2**:
+
+   ```bash
+   ssh -i "my-key.pem" ubuntu@<EC2_PUBLIC_IP>
+   ```
+3. **Activate venv & run app**:
+
+   ```bash
+   cd ml-deployment-demo
+   source venv/bin/activate
+   streamlit run app/streamlit_app.py --server.address 0.0.0.0 --server.port 8501
+   ```
+4. **Access in browser**:
+
+   ```
+   http://<EC2_PUBLIC_IP>:8501/
+   ```
+
+---
+
+### 3. Example UI
+
+* Input patient details using sliders/inputs.
+* Click **Predict** → model outputs diabetes progression score.
+
+---
+
+✅ With this, the project now has **two deployment modes**:
+
+* FastAPI API endpoint (Phase 2 & 3)
+* Streamlit interactive UI (Phase 4)
+
+
+
+---
+
+That closes Phase 4 neatly 🎉  
+
+
 ### **Phase 6: Presentation & Documentation**
 
 * [ ] Create a **presentation-ready walkthrough** (slides or markdown).
