@@ -20,6 +20,119 @@ This project demonstrates how to train, save, and deploy a simple ML model on AW
 - **Phase 5: CI/CD Pipeline** → GitHub Actions for automation.
 - **Phase 6: Presentation & Documentation** -> 
 
+
+## 🚀 Phase 3: Deploying FastAPI App on AWS EC2
+
+### 1. Launch EC2 Instance
+
+* Go to **AWS Console → EC2 → Launch Instance**
+* Choose:
+
+  * **Name**: `ml-demo-instance`
+  * **AMI**: Ubuntu Server 22.04 LTS (Free Tier eligible)
+  * **Instance type**: `t2.micro` or `t3.micro`
+  * **Key pair**: Create/download `.pem` file
+  * **Security group inbound rules**:
+
+    * **SSH (22)** → *My IP only*
+    * **Custom TCP (8000)** → *My IP* (or `0.0.0.0/0` for public demo)
+* Launch the instance and copy the **Public IPv4 address**.
+
+---
+
+### 2. Connect via SSH
+
+From local terminal (Git Bash / WSL on Windows, or Linux/Mac):
+
+```bash
+chmod 400 my-key.pem
+ssh -i "my-key.pem" ubuntu@<EC2_PUBLIC_IP>
+```
+
+---
+
+### 3. Prepare Environment
+
+On the EC2 instance:
+
+```bash
+# Update packages
+sudo apt update && sudo apt upgrade -y
+
+# Install Python, pip, git
+sudo apt install python3 python3-venv python3-pip git -y
+```
+
+---
+
+### 4. Clone Repository & Setup
+
+```bash
+# Clone repo
+git clone https://github.com/<your-username>/<your-repo>.git
+cd <your-repo>
+
+# Create virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+# Install dependencies
+pip install --upgrade pip
+pip install -r requirements.txt
+
+# Ensure model is available
+python src/train_diabetes.py   # if model not already saved
+```
+
+---
+
+### 5. Run FastAPI App
+
+```bash
+uvicorn app.fastapi_app:app --host 0.0.0.0 --port 8000
+```
+
+* App will be live at:
+  `http://<EC2_PUBLIC_IP>:8000/`
+* Swagger UI docs available at:
+  `http://<EC2_PUBLIC_IP>:8000/docs`
+
+---
+
+### 6. Test API
+
+From local machine:
+
+```bash
+curl http://<EC2_PUBLIC_IP>:8000/
+```
+
+Or use the provided script:
+
+```bash
+python test_api.py
+```
+
+---
+
+### 7. Shutdown & Terminate
+
+When done with the demo:
+
+1. Exit SSH:
+
+   ```bash
+   exit
+   ```
+2. In AWS Console → EC2 → select instance → **Instance state → Terminate**.
+3. Instance will show as **terminated** (safe, no charges).
+
+---
+
+✅ That’s the full cycle — launch → deploy → test → terminate.
+
+
+
 ### **Phase 6: Presentation & Documentation**
 
 * [ ] Create a **presentation-ready walkthrough** (slides or markdown).
